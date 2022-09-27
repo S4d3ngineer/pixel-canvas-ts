@@ -1,6 +1,13 @@
 import { useState } from "react";
 import Canvas from "./Canvas";
 import { downloadAsPNG } from "./helpers";
+import React from "react";
+
+export type HandleDivClick = (
+  e: React.MouseEvent<HTMLDivElement, MouseEvent>
+) => null;
+
+export type HandlePixelClick = (row: number, column: number) => HandleDivClick;
 
 function App() {
 	const [downloadButton, setDownloadButton] = useState({
@@ -33,7 +40,8 @@ function App() {
 		return pixels;
 	}
 
-	const handleMouseEvent = (row, column) => (e) => {
+  // const handleMouseEvent = ({}) => {
+	const handleMouseEvent: HandlePixelClick = (row, column) => (e) => {
 		if (e.buttons === 1) {
 			const pixelsCopy = pixelBlocks.slice();
 			pixelsCopy[row][column] = penColor;
@@ -43,6 +51,7 @@ function App() {
 			pixelsCopy[row][column] = bgColor;
 			setPixelBlocks(pixelsCopy);
 		}
+    return null;
 	};
 
 	function handleClear() {
@@ -56,9 +65,15 @@ function App() {
 			isDisabled: true,
 			text: "Downloading should start soon",
 		});
+    const pixelData = {
+      pixelBlocks,
+      width,
+      height,
+      blockSize
+    }
 		setTimeout(
-			downloadAsPNG.bind(null, pixelBlocks, width, height, blockSize),
-			0
+			downloadAsPNG.bind(null, pixelData),
+      0
 		);
 		setTimeout(
 			setDownloadButton.bind(null, {
@@ -79,7 +94,7 @@ function App() {
 			</div>
 			<Canvas
 				pixels={pixelBlocks}
-				onMouseEvent={(row, column) => handleMouseEvent(row, column)}
+				onMouseEvent={handleMouseEvent}
 				gridHeight={blocksVertical}
 				gridWidth={blocksHorizontal}
 			/>

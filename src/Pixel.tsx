@@ -1,12 +1,15 @@
-import React from "react";
+import { HandleDivClick } from "./App";
 
-export default function Pixel(props){
-  const color = props.color;
+interface Props {
+  color: string;
+  onMouseEvent: HandleDivClick;
+}
 
+export default function Pixel(props: Props){
   return (
     <div
       className="pixel"
-      style={{ background: color }}
+      style={{ background: props.color }}
       onMouseOver={props.onMouseEvent}
       onMouseDown={props.onMouseEvent}
       // Prevent default events behaviour, so it is not inerrupting drawing
