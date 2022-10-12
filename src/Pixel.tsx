@@ -5,7 +5,7 @@ interface Props {
   onMouseEvent: HandleDivClick;
 }
 
-export default function Pixel(props: Props){
+export default function Pixel(props: Props) {
   return (
     <div
       className="pixel"
@@ -20,5 +20,5 @@ export default function Pixel(props: Props){
       onDrop={(e) => e.preventDefault()}
     >
     </div>
-    );
+  );
 }
