@@ -1,5 +1,5 @@
-import Pixel from "./Pixel";
-import { HandlePixelClick } from "./App";
+import Pixel from './Pixel';
+import { HandlePixelClick } from './App';
 
 interface Props {
   pixels: string[][];
@@ -10,15 +10,17 @@ interface Props {
 
 function Canvas(props: Props) {
   function renderPixels() {
-    const pixelComponents = []
-    for (let i = 0; i < props.gridHeight; i++) {
+    const pixelComponents = [];
+    for (let rowIndex = 0; rowIndex < props.gridHeight; rowIndex++) {
       const row = [];
-      for (let j = 0; j < props.gridWidth; j++) {
+      for (let columnIndex = 0; columnIndex < props.gridWidth; columnIndex++) {
         row.push(
           <Pixel
-            key={i + '.' + j}
-            color={props.pixels[i][j]}
-            onMouseEvent={props.onMouseEvent(i, j)}
+            key={rowIndex + '.' + columnIndex}
+            row={rowIndex}
+            column={columnIndex}
+            color={props.pixels[rowIndex][columnIndex]}
+            onMouseEvent={props.onMouseEvent}
           />
         );
       }
@@ -27,11 +29,7 @@ function Canvas(props: Props) {
     return pixelComponents;
   }
 
-  return (
-    <div className="canvas">
-      {renderPixels()}
-    </div>
-  );
+  return <div className='canvas'>{renderPixels()}</div>;
 }
 
-export default Canvas
+export default Canvas;
