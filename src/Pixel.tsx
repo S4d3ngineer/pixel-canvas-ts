@@ -1,24 +1,28 @@
-import { HandleDivClick } from "./App";
+import React from 'react';
+import { HandlePixelClick } from './App';
 
 interface Props {
+  row: number;
+  column: number;
   color: string;
-  onMouseEvent: HandleDivClick;
+  onMouseEvent: HandlePixelClick;
 }
 
-export default function Pixel(props: Props) {
+function Pixel(props: Props) {
   return (
     <div
-      className="pixel"
+      className='pixel'
       style={{ background: props.color }}
-      onMouseOver={props.onMouseEvent}
-      onMouseDown={props.onMouseEvent}
+      onMouseOver={props.onMouseEvent(props.row, props.column)}
+      onMouseDown={props.onMouseEvent(props.row, props.column)}
       // Prevent default events behaviour, so it is not inerrupting drawing
       onContextMenu={(e) => e.preventDefault()}
       onDragStart={(e) => e.preventDefault()}
       onDragEnd={(e) => e.preventDefault()}
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => e.preventDefault()}
-    >
-    </div>
+    ></div>
   );
 }
+
+export default React.memo(Pixel);
