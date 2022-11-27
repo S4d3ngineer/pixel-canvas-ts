@@ -1,3 +1,6 @@
+@use 'colors';
+@use 'buttons';
+
 body {
   display: flex;
   justify-content: center;
@@ -14,7 +17,7 @@ body {
   align-items: center;
 }
 
-// TODO make panel separata component
+// TODO make panel separate component
 .panel {
   display: flex;
   flex-direction: column;
@@ -26,10 +29,6 @@ body {
 
 .panel h1 {
   font-size: 3rem;
-}
-
-#clear {
-  width: 100px;
 }
 
 #save-img {

@@ -96,7 +96,7 @@ function App() {
     <div className='App'>
       <div className='panel'>
         <h1>Pixel Canvas</h1>
-        <button id='clear' onClick={handleClear}>
+        <button className='btn__primary' onClick={handleClear}>
           Clear
         </button>
       </div>
@@ -107,6 +107,7 @@ function App() {
         gridWidth={blocksHorizontal}
       />
       <button
+        className='btn__primary'
         id='save-img'
         onClick={handleDownloadClick}
         disabled={downloadButton.isDisabled}

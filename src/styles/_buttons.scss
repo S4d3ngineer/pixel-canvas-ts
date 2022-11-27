@@ -1,0 +1,17 @@
+@use 'colors';
+
+.btn__primary {
+  border: 2px solid colors.$secondary;
+  border-radius: 10px;
+  outline: none;
+  width: 100px;
+  padding: 8px 0;
+  background-color: colors.$primary;
+  cursor: pointer;
+  color: #fff;
+  &:hover {
+    background-color: colors.$secondary;
+    color: colors.$primary;
+  }
+}
+
