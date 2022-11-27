@@ -1,10 +1,10 @@
 body {
-  font-family: 'Roboto', sans-serif;
-  background: black;
-  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: black;
+  font-family: 'Roboto', sans-serif;
+  color: white;
 }
 
 .App {
@@ -14,30 +14,18 @@ body {
   align-items: center;
 }
 
+// TODO make panel separata component
 .panel {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .panel h1 {
   font-size: 3rem;
-}
-
-.canvas {
-  display: flex;
-  flex-wrap: wrap;
-  width: 512px;
-  height: 512px;
-}
-
-.pixel {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
 }
 
 #clear {

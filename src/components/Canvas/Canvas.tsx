@@ -1,5 +1,6 @@
 import Pixel from '@/components/Canvas/Pixel/Pixel';
 import { HandlePixelClick } from '@/App';
+import s from './Canvas.module.scss';
 
 interface Props {
   pixels: string[][];
@@ -29,7 +30,7 @@ function Canvas(props: Props) {
     return pixelComponents;
   }
 
-  return <div className='canvas'>{renderPixels()}</div>;
+  return <div className={s.container}>{renderPixels()}</div>;
 }
 
 export default Canvas;

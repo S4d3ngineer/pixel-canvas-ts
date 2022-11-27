@@ -1,5 +1,6 @@
 import React from 'react';
 import { HandlePixelClick } from '@/App';
+import s from './Pixel.module.scss';
 
 interface Props {
   row: number;
@@ -11,7 +12,7 @@ interface Props {
 function Pixel(props: Props) {
   return (
     <div
-      className='pixel'
+      className={s.pixel}
       style={{ background: props.color }}
       onMouseOver={props.onMouseEvent(props.row, props.column)}
       onMouseDown={props.onMouseEvent(props.row, props.column)}
