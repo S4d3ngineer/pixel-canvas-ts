@@ -24,14 +24,14 @@ export const downloadAsPNG = ({
     canvas.width = width;
 
     // Transforming array containing color data for components to array representing equivalent pixels
-    const pixels: string[] = [];
+    let pixels: string[] = [];
     for (const row of pixelBlocks) {
-      const newRow: string[] = [];
+      let newRow: string[] = [];
 
       for (const pixel of row) {
-        newRow.push.apply(newRow, Array(blockSize).fill(pixel));
+        newRow = [...newRow, ...Array(blockSize).fill(pixel)]
       }
-      pixels.push.apply(pixels, Array(blockSize).fill(newRow));
+      pixels = [...pixels, ...Array(blockSize).fill(newRow)]
     }
 
     // Transform 2-d pixels array into 1-d array
