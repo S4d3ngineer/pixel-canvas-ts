@@ -1,5 +1,5 @@
 import React from 'react';
-import { HandlePixelClick } from './App';
+import { HandlePixelClick } from '@/App';
 
 interface Props {
   row: number;

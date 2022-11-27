@@ -1,9 +1,9 @@
-import Pixel from './Pixel';
-import { HandlePixelClick } from './App';
+import Pixel from '@/components/Canvas/Pixel/Pixel';
+import { HandlePixelClick } from '@/App';
 
 interface Props {
   pixels: string[][];
-  onMouseEvent: HandlePixelClick;
+  handlePixelClick: HandlePixelClick;
   gridHeight: number;
   gridWidth: number;
 }
@@ -20,7 +20,7 @@ function Canvas(props: Props) {
             row={rowIndex}
             column={columnIndex}
             color={props.pixels[rowIndex][columnIndex]}
-            onMouseEvent={props.onMouseEvent}
+            onMouseEvent={props.handlePixelClick}
           />
         );
       }

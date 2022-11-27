@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import Canvas from './Canvas';
-import { downloadAsPNG } from './helpers';
+import Canvas from '@/components/Canvas/Canvas';
+import { downloadAsPNG } from '@/services/Download.service';
 import React from 'react';
 
 export type HandleDivClick = (
@@ -40,7 +40,7 @@ function App() {
     return pixels;
   }
 
-  const handleMouseEvent: HandlePixelClick = useCallback(
+  const handlePixelClick: HandlePixelClick = useCallback(
     (rowIndex, columnIndex) => (e) => {
       if (e.buttons === 1) {
         const alterPixel = (currentPixelsState: string[][]) => {
@@ -102,7 +102,7 @@ function App() {
       </div>
       <Canvas
         pixels={pixelBlocks}
-        onMouseEvent={handleMouseEvent}
+        handlePixelClick={handlePixelClick}
         gridHeight={blocksVertical}
         gridWidth={blocksHorizontal}
       />
