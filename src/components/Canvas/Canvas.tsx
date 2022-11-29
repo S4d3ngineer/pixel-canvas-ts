@@ -13,9 +13,8 @@ function Canvas(props: Props) {
   function renderPixels() {
     const pixelComponents = [];
     for (let rowIndex = 0; rowIndex < props.gridHeight; rowIndex++) {
-      const row = [];
       for (let columnIndex = 0; columnIndex < props.gridWidth; columnIndex++) {
-        row.push(
+        pixelComponents.push(
           <Pixel
             key={rowIndex + '.' + columnIndex}
             row={rowIndex}
@@ -25,12 +24,16 @@ function Canvas(props: Props) {
           />
         );
       }
-      pixelComponents.push(row);
     }
     return pixelComponents;
   }
 
-  return <div className={s.container}>{renderPixels()}</div>;
+  return (
+    <div className={s.container}>
+      <div className={s.background}></div>
+      <div className={s.canvas}>{renderPixels()}</div>
+    </div>
+  )
 }
 
 export default Canvas;
