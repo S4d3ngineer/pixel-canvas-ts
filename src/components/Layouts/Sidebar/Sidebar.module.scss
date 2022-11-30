@@ -1,14 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: space-between; */
   align-items: center;
   background-color: #222;
-  height: 100vh;
   .sizeForm {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    // margin-bottom: auto;
     padding: 20px;
     label {
       margin: auto 0;
@@ -16,6 +16,6 @@
   }
 }
 
-#saveImg {
-  margin-top: 1rem;
-}
+// #saveImg {
+//   margin-top: 1rem;
+// }
