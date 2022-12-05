@@ -1,14 +1,16 @@
 @use 'colors';
+@use '@/styles/spacings';
 
-.btn__primary {
+.btn--primary {
   border: 2px solid colors.$secondary;
   border-radius: 10px;
   outline: none;
-  width: 100px;
-  padding: 8px 0;
+  min-width: 80px;
+  padding: spacings.$s-base;
   background-color: colors.$primary;
   cursor: pointer;
-  color: #fff;
+  font-size: 1.25rem;
+  color: colors.$secondary;
   &:hover {
     background-color: colors.$secondary;
     color: colors.$primary;

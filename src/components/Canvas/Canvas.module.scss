@@ -1,6 +1,23 @@
 .container {
   display: flex;
+  font-display: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.canvas {
+  display: flex;
   flex-wrap: wrap;
+  margin: auto;
   width: 512px;
   height: 512px;
+}
+
+.background {
+  display: none;
+  width: 512px;
+  height: 512px;
+  /* background: linear-gradient(to left, #eee, #555); */
+  background: repeating-conic-gradient(#808080 0% 25%, transparent 0% 50%) 
+      50% / 20px 20px
 }

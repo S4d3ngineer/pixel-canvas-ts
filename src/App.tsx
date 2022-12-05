@@ -2,6 +2,8 @@ import { useCallback, useState } from 'react';
 import Canvas from '@/components/Canvas/Canvas';
 import { downloadAsPNG } from '@/services/Download.service';
 import React from 'react';
+import Sidebar from './components/Layouts/Sidebar/Sidebar';
+import Navbar from './components/Layouts/Navbar/Navbar';
 
 export type HandleDivClick = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -19,20 +21,24 @@ function App() {
   // and allow to alter them via UI
   const width = 512;
   const height = 512;
-  const blockSize = 16;
-  const blocksHorizontal = width / blockSize;
-  const blocksVertical = height / blockSize;
-  const bgColor = '#FFFFFF';
-  const initialPixels = getBlankPixels();
+  const blockSize = 16; // TODO make that it works only as input for download methods
+  // const blocksHorizontal = width / blockSize;
+  // const blocksVertical = height / blockSize;
+  const defaultGridSize = {
+    width: 32,
+    height: 32,
+  }
 
-  const [pixelBlocks, setPixelBlocks] = useState(initialPixels);
+  const [gridSize, setGridSize] = useState(defaultGridSize);
   const [penColor, setPenColor] = useState('#000000');
+  const [bgColor, setBgColor] = useState('#ffffffff');
+  const [pixelBlocks, setPixelBlocks] = useState(getBlankPixels());
 
   function getBlankPixels() {
     const pixels = [];
-    for (let rowIndex = 0; rowIndex < blocksVertical; rowIndex++) {
+    for (let rowIndex = 0; rowIndex < defaultGridSize.height; rowIndex++) {
       const row = [];
-      for (let columnIndex = 0; columnIndex < blocksHorizontal; columnIndex++) {
+      for (let columnIndex = 0; columnIndex < defaultGridSize.width; columnIndex++) {
         row.push(bgColor);
       }
       pixels.push(row);
@@ -65,6 +71,10 @@ function App() {
     [penColor]
   );
 
+  function handleSizeChange() {
+    return
+  }
+
   function handleClear() {
     const blankPixels = getBlankPixels();
     setPixelBlocks(blankPixels);
@@ -94,26 +104,23 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='panel'>
-        <h1>Pixel Canvas</h1>
-        <button className='btn__primary' onClick={handleClear}>
-          Clear
-        </button>
+      <Navbar />
+      <div className='app-content'>
+        <Sidebar
+          handleSizeChange={handleSizeChange}
+          handleClear={handleClear}
+          pixelBlocks={pixelBlocks}
+          width={width}
+          height={height}
+          blockSize={blockSize}
+        />
+        <Canvas
+          pixels={pixelBlocks}
+          handlePixelClick={handlePixelClick}
+          gridHeight={gridSize.height}
+          gridWidth={gridSize.width}
+        />
       </div>
-      <Canvas
-        pixels={pixelBlocks}
-        handlePixelClick={handlePixelClick}
-        gridHeight={blocksVertical}
-        gridWidth={blocksHorizontal}
-      />
-      <button
-        className='btn__primary'
-        id='save-img'
-        onClick={handleDownloadClick}
-        disabled={downloadButton.isDisabled}
-      >
-        {downloadButton.text}
-      </button>
     </div>
   );
 }
