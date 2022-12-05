@@ -1,7 +1,11 @@
+@use '@/styles/colors';
+@use '@/styles/spacings';
+
 .container {
   width: 100%;
-  background: #111;
+  background: colors.$grey--very-dark;
   h1 {
-    padding: 20px;
+    padding: spacings.$s-2 spacings.$s-4;
+    font-size: 3rem;
   }
 }

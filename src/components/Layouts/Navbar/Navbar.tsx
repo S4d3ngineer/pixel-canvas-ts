@@ -1,3 +1,4 @@
+import React from 'react';
 import s from './Navbar.module.scss';
 
 function Navbar() {
@@ -8,4 +9,4 @@ function Navbar() {
   )
 }
 
-export default Navbar;
+export default React.memo(Navbar);

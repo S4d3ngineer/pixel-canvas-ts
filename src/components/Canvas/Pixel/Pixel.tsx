@@ -10,6 +10,7 @@ interface Props {
 }
 
 function Pixel(props: Props) {
+
   return (
     <div
       className={s.pixel}

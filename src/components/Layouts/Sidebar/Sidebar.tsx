@@ -1,11 +1,12 @@
+import React from 'react';
 import { downloadAsPNG } from '@/services/Download.service';
 import { useState } from 'react';
 import s from './Sidebar.module.scss';
 
 interface Props {
   handleSizeChange: any; // TODO
-  handleClear: any;
-  pixelBlocks: string[][];
+  handleClear: any; // TODO
+  pixelBlocks: string[][]; // TODO pass it to button and pass button to sidebar so the sidebar won't rerender when not needed
   width: number;
   height: number;
   blockSize: number;
@@ -29,25 +30,24 @@ function Sidebar(props: Props) {
 
   return (
     <div className={s.container}>
-      <form className={s.sizeForm} onSubmit={props.handleSizeChange}>
-        <label htmlFor='width-input'>Width: </label>
-        <input type='number' name='width' id='width-input' min='1' max='4000' />
-        <label htmlFor='height-input'>Height: </label>
-        <input
-          type='number'
-          name='height'
-          id='height-input'
-          min='1'
-          max='4000'
-        />
-        <input className='btn--primary' type='submit' value='Set size' />
-      </form>
+      {/* <form className={s.sizeForm} onSubmit={props.handleSizeChange}> */}
+      {/*   <label htmlFor='width-input'>Width: </label> */}
+      {/*   <input type='number' name='width' id='width-input' min='1' max='4000' /> */}
+      {/*   <label htmlFor='height-input'>Height: </label> */}
+      {/*   <input */}
+      {/*     type='number' */}
+      {/*     name='height' */}
+      {/*     id='height-input' */}
+      {/*     min='1' */}
+      {/*     max='4000' */}
+      {/*   /> */}
+      {/*   <input className='btn--primary' type='submit' value='Set size' /> */}
+      {/* </form> */}
       <button className='btn--primary' onClick={props.handleClear}>
         Clear
       </button>
       <button
         className='btn--primary'
-        id={s.saveImg}
         onClick={handleDownloadClick}
         disabled={downloadPngDisabled}
       >
@@ -57,4 +57,4 @@ function Sidebar(props: Props) {
   );
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);

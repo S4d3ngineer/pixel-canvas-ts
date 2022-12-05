@@ -1,21 +1,24 @@
+@use '@/styles/colors';
+@use '@/styles/spacings';
+
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
-  background-color: #222;
+  padding: spacings.$s-4;
+  background-color: colors.$grey--dark;
   .sizeForm {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    // margin-bottom: auto;
+    margin-bottom: auto;
     padding: 20px;
     label {
       margin: auto 0;
     }
   }
+  button {
+    margin: spacings.$s-2 0;
+  }
 }
-
-// #saveImg {
-//   margin-top: 1rem;
-// }

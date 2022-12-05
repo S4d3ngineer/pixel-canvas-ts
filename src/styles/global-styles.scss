@@ -9,6 +9,7 @@
 
 * {
   margin: 0;
+  line-height: 1.5;
 }
 
 html,
@@ -22,16 +23,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow: hidden; */
   background: black;
   font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
   color: white;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  border: solid white;
   min-height: 100%;
 }
 
@@ -39,10 +39,4 @@ body {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-}
-
-/* TODO make panel separate component */
-h1 {
-  font-size: 3rem;
-  margin: 0;
 }
